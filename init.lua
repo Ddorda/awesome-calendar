@@ -40,7 +40,8 @@ function displayMonth(month,year,weekStart)
 
     local writeLine = 1
     while writeLine < (stDay + 1) do
-        lines = lines .. "    "
+        --lines = lines .. "    "
+        lines = lines .. "     "
         writeLine = writeLine + 1
     end
 
@@ -57,7 +58,7 @@ function displayMonth(month,year,weekStart)
         if (#(tostring(d)) == 1) then
             x = " " .. x
         end
-        lines = lines .. "  " .. x
+        lines = lines .. "   " .. x
         writeLine = writeLine + 1
     end
     local header = "<b><i>" .. os.date("%B, %Y", os.time{year=year,month=month,day=1}) .. "</i></b>\n"
@@ -72,7 +73,7 @@ function switchNaughtyMonth(switchMonths)
 
     calendar_new = { calendar[1], calendar[2],
     naughty.notify({
-        text = string.format('<span font_desc="%s">%s</span>', "monospace", displayMonth(calendar[1], calendar[2], 2)),
+        text = string.format('<span font_desc="%s">%s</span>', "monospace", displayMonth(calendar[1], calendar[2])),
         timeout = 0,
         hover_timeout = 0.5,
         screen = capi.mouse.screen,
@@ -96,7 +97,7 @@ function addCalendarToWidget(mywidget, custom_current_day_format)
         local month, year = os.date('%m'), os.date('%Y')
         calendar = { month, year,
         naughty.notify({
-            text = string.format('<span font_desc="%s">%s</span>', "monospace", displayMonth(month, year, 2)),
+            text = string.format('<span font_desc="%s">%s</span>', "monospace", displayMonth(month, year)),
             timeout = 0,
             hover_timeout = 0.5,
             screen = capi.mouse.screen
